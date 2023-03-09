@@ -1,12 +1,12 @@
 public class Personagem{
-    String nome;
-    int energia, fome, sono;
+    private String nome;
+    private int energia, fome, sono;
 
     public Personagem(String nome, int energia, int fome, int sono){
         this.nome = nome;
-        this.energia = energia;
-        this.fome = fome;
-        this.fome = fome;
+        setEnergia(energia);
+        setFome(fome);
+        setSono(sono);
     }
 
     void cacar(){
@@ -18,6 +18,7 @@ public class Personagem{
         }
         setFome(fome + 1);
         setSono(sono + 1);
+        System.out.println(obterEstado());
     }
 
     void comer(){
@@ -27,6 +28,7 @@ public class Personagem{
             setFome(fome - 1);
         }else
             System.out.print(nome + " sem fome\n");
+        System.out.println(obterEstado());
     }
      
     void dormir(){
@@ -36,29 +38,34 @@ public class Personagem{
             setSono(sono - 1);
         }else 
             System.out.printf("%s sem sono%n", nome);
+        System.out.println(obterEstado());
     }
 
-    void setFome(int fome) {
+    private void setFome(int fome) {
         if(fome > 10){
-            System.out.println(nome + " esta morrendo de fome");
+            System.out.println(nome + " morrendo de fome");
             this.fome = 10;
         }else
             this.fome = fome;
     }
 
-    void setSono(int sono) {
+    private void setSono(int sono) {
         if(sono > 10){
-            System.out.println(nome + " esta morrendo de sono");
+            System.out.println(nome + " morrendo de sono");
             this.sono = 10;
         }else
             this.sono = sono;
     }
 
-    void setEnergia(int energia){
+    private void setEnergia(int energia){
         if(energia > 10)
             this.energia = 10;
         else
             this.energia = energia;
+    }
+
+    String obterEstado(){
+        return String.format("e(%d) s(%d) f(%d)", energia, sono, fome);
     }
 
 }

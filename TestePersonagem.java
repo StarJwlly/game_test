@@ -1,9 +1,16 @@
 public class TestePersonagem{
-    public static void main(String... args){
-        Personagem p = new Personagem("Joao", 100, 0, 0);
+    public static void main(String... args) throws Exception{
+        Personagem p = new Personagem("Joao", 10, 0, 0);
 
-        p.cacar();
-        p.comer();
-        p.dormir();
+        while(true){
+            p.cacar();
+            p.comer();
+            p.dormir();
+            p.cacar();
+            p.cacar();
+            p.cacar();
+            System.out.println("======================");
+            Thread.sleep(5000);
+        }
     }
 }
